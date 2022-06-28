@@ -14915,7 +14915,7 @@ leen {&#39;male&#39;: 0, &#39;female&#39;: 30, &#39;entropy&#39;: 0.200622324312
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[140]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[153]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function to train the model</span>
@@ -14941,17 +14941,20 @@ leen {&#39;male&#39;: 0, &#39;female&#39;: 30, &#39;entropy&#39;: 0.200622324312
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Accuacy:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
     <span class="n">classifier</span><span class="o">.</span><span class="n">show_most_informative_features</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
+    <span class="c1"># Generate list of names the model got wrong</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span> <span class="ow">in</span> <span class="n">devtest_names</span><span class="p">:</span>
         <span class="n">guess</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">gender_features</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">guess</span> <span class="o">!=</span> <span class="n">tag</span><span class="p">:</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tag</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
 
+    <span class="c1"># Print out the first few wrong names</span>
     <span class="n">errlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;correct=</span><span class="si">{:&lt;8}</span><span class="s1"> guess=</span><span class="si">{:&lt;8s}</span><span class="s1"> name=</span><span class="si">{:&lt;30}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">errors</span><span class="p">)]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">First 10 errors:&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">errlist</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
 
+    <span class="c1"># Return the accuracy result</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 
