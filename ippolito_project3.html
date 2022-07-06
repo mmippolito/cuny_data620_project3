@@ -14627,7 +14627,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[148]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load libraries</span>
@@ -14671,7 +14671,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load names into list and shuffle</span>
@@ -14706,7 +14706,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[152]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Array to store explanation for what each iteration means</span>
@@ -14784,7 +14784,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[139]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Function to find n-letter sequences</span>
@@ -14805,7 +14805,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">entropy_female</span> <span class="o">=</span> <span class="n">p_female</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p_female</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">entropy_male</span> <span class="o">+</span> <span class="n">entropy_female</span><span class="p">)</span>
 
-<span class="c1"># EDA</span>
+<span class="c1"># EDA - look at letter sequences of 2, 3, and 4 letters</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
 
     <span class="c1"># Generate nletters for names - EDA</span>
@@ -14824,11 +14824,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
     <span class="c1"># EDA - look at nletter counts</span>
     <span class="n">ct</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nletter_sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;male_count&#39;</span><span class="p">,</span> <span class="s1">&#39;female_count&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nletter_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">ct</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="c1">#print(k, i)</span>
+        <span class="n">dftmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s1">&#39;nletter_sequence&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="s1">&#39;male_count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">]],</span> <span class="s1">&#39;female_count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;female&#39;</span><span class="p">]],</span> <span class="s1">&#39;entropy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;entropy&#39;</span><span class="p">]]})</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">dftmp</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ct</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
             <span class="k">break</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 
@@ -14852,44 +14856,395 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>n: 2
-wo {&#39;male&#39;: 29, &#39;female&#39;: 0, &#39;entropy&#39;: 0.20559250818508293}
-gw {&#39;male&#39;: 0, &#39;female&#39;: 16, &#39;entropy&#39;: 0.3095434291503252}
-rv {&#39;male&#39;: 28, &#39;female&#39;: 1, &#39;entropy&#39;: 0.3451173149449531}
-hu {&#39;male&#39;: 38, &#39;female&#39;: 2, &#39;entropy&#39;: 0.3712323266408755}
-fo {&#39;male&#39;: 35, &#39;female&#39;: 2, &#39;entropy&#39;: 0.3912435636292555}
-uz {&#39;male&#39;: 0, &#39;female&#39;: 11, &#39;entropy&#39;: 0.39124356362925566}
-a- {&#39;male&#39;: 0, &#39;female&#39;: 9, &#39;entropy&#39;: 0.4394969869215134}
-ht {&#39;male&#39;: 9, &#39;female&#39;: 0, &#39;entropy&#39;: 0.4394969869215134}
-nf {&#39;male&#39;: 8, &#39;female&#39;: 0, &#39;entropy&#39;: 0.46899559358928117}
-gs {&#39;male&#39;: 8, &#39;female&#39;: 0, &#39;entropy&#39;: 0.46899559358928117}
-hm {&#39;male&#39;: 8, &#39;female&#39;: 0, &#39;entropy&#39;: 0.46899559358928117}
+</pre>
+</div>
+</div>
 
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nletter_sequence</th>
+      <th>male_count</th>
+      <th>female_count</th>
+      <th>entropy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>wo</td>
+      <td>29</td>
+      <td>0</td>
+      <td>0.205593</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>gw</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0.309543</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>rv</td>
+      <td>28</td>
+      <td>1</td>
+      <td>0.345117</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>hu</td>
+      <td>38</td>
+      <td>2</td>
+      <td>0.371232</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fo</td>
+      <td>35</td>
+      <td>2</td>
+      <td>0.391244</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>uz</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0.391244</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>a-</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0.439497</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ht</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0.439497</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>gs</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.468996</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>nf</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.468996</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>hm</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.468996</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
 n: 3
-nna {&#39;male&#39;: 1, &#39;female&#39;: 108, &#39;entropy&#39;: 0.1301627906682594}
-bet {&#39;male&#39;: 0, &#39;female&#39;: 36, &#39;entropy&#39;: 0.17556502585750278}
-tte {&#39;male&#39;: 2, &#39;female&#39;: 99, &#39;entropy&#39;: 0.18999075553626754}
-cin {&#39;male&#39;: 0, &#39;female&#39;: 27, &#39;entropy&#39;: 0.21639693245126468}
-eta {&#39;male&#39;: 0, &#39;female&#39;: 27, &#39;entropy&#39;: 0.21639693245126468}
-ina {&#39;male&#39;: 6, &#39;female&#39;: 178, &#39;entropy&#39;: 0.23133887248058443}
-lit {&#39;male&#39;: 0, &#39;female&#39;: 24, &#39;entropy&#39;: 0.2351933818192415}
-kat {&#39;male&#39;: 1, &#39;female&#39;: 47, &#39;entropy&#39;: 0.24229218908241482}
-lda {&#39;male&#39;: 0, &#39;female&#39;: 23, &#39;entropy&#39;: 0.24229218908241482}
-tta {&#39;male&#39;: 2, &#39;female&#39;: 66, &#39;entropy&#39;: 0.2552421131901918}
-lea {&#39;male&#39;: 0, &#39;female&#39;: 21, &#39;entropy&#39;: 0.2580186686648155}
+</pre>
+</div>
+</div>
 
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nletter_sequence</th>
+      <th>male_count</th>
+      <th>female_count</th>
+      <th>entropy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>nna</td>
+      <td>1</td>
+      <td>108</td>
+      <td>0.130163</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bet</td>
+      <td>0</td>
+      <td>36</td>
+      <td>0.175565</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>tte</td>
+      <td>2</td>
+      <td>99</td>
+      <td>0.189991</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>cin</td>
+      <td>0</td>
+      <td>27</td>
+      <td>0.216397</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>eta</td>
+      <td>0</td>
+      <td>27</td>
+      <td>0.216397</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ina</td>
+      <td>6</td>
+      <td>178</td>
+      <td>0.231339</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>lit</td>
+      <td>0</td>
+      <td>24</td>
+      <td>0.235193</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>kat</td>
+      <td>1</td>
+      <td>47</td>
+      <td>0.242292</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>lda</td>
+      <td>0</td>
+      <td>23</td>
+      <td>0.242292</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>tta</td>
+      <td>2</td>
+      <td>66</td>
+      <td>0.255242</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>iss</td>
+      <td>2</td>
+      <td>65</td>
+      <td>0.258019</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
 n: 4
-ette {&#39;male&#39;: 0, &#39;female&#39;: 94, &#39;entropy&#39;: 0.08354288831032232}
-ella {&#39;male&#39;: 0, &#39;female&#39;: 71, &#39;entropy&#39;: 0.10441907800540785}
-elin {&#39;male&#39;: 0, &#39;female&#39;: 56, &#39;entropy&#39;: 0.12565805017256743}
-line {&#39;male&#39;: 0, &#39;female&#39;: 55, &#39;entropy&#39;: 0.12741851179235877}
-iann {&#39;male&#39;: 0, &#39;female&#39;: 41, &#39;entropy&#39;: 0.15935006268563445}
-lina {&#39;male&#39;: 0, &#39;female&#39;: 41, &#39;entropy&#39;: 0.15935006268563445}
-anna {&#39;male&#39;: 1, &#39;female&#39;: 71, &#39;entropy&#39;: 0.1792560669283215}
-lene {&#39;male&#39;: 0, &#39;female&#39;: 34, &#39;entropy&#39;: 0.18312206830137276}
-bell {&#39;male&#39;: 0, &#39;female&#39;: 33, &#39;entropy&#39;: 0.18717625687320816}
-alin {&#39;male&#39;: 0, &#39;female&#39;: 30, &#39;entropy&#39;: 0.20062232431271465}
-leen {&#39;male&#39;: 0, &#39;female&#39;: 30, &#39;entropy&#39;: 0.20062232431271465}
+</pre>
+</div>
+</div>
 
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nletter_sequence</th>
+      <th>male_count</th>
+      <th>female_count</th>
+      <th>entropy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ette</td>
+      <td>0</td>
+      <td>94</td>
+      <td>0.083543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ella</td>
+      <td>0</td>
+      <td>71</td>
+      <td>0.104419</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>elin</td>
+      <td>0</td>
+      <td>56</td>
+      <td>0.125658</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>line</td>
+      <td>0</td>
+      <td>55</td>
+      <td>0.127419</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>lina</td>
+      <td>0</td>
+      <td>41</td>
+      <td>0.15935</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>iann</td>
+      <td>0</td>
+      <td>41</td>
+      <td>0.15935</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>anna</td>
+      <td>1</td>
+      <td>71</td>
+      <td>0.179256</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>lene</td>
+      <td>0</td>
+      <td>34</td>
+      <td>0.183122</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>bell</td>
+      <td>0</td>
+      <td>33</td>
+      <td>0.187176</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>alin</td>
+      <td>0</td>
+      <td>30</td>
+      <td>0.200622</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>leen</td>
+      <td>0</td>
+      <td>30</td>
+      <td>0.200622</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
 </pre>
 </div>
 </div>
@@ -15666,118 +16021,6 @@ Most Informative Features
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
